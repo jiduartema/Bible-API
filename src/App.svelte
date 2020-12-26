@@ -37,23 +37,39 @@
 </style>
 
 <form on:submit={sendDevotional}>
-    <input
-        bind:value={Devotional.biblicalQuotes}
-        type="text"
-        placeholder="Biblical quotes" />
-    <textarea
-        bind:value={Devotional.description}
-        rows="3"
-        placeholder="Description" />
-    <button> save </button>
+    <div class="container col-md-4">
+        <h1><span class="badge rounded-pill bg-dark btn-outline-light">Create devotional</span></h1>
+        <div class="mb-3">
+            <label for="formBiblicalQuotes" class="form-label">Biblical Quotes</label>
+            <input  bind:value={Devotional.biblicalQuotes} type="text" class="form-control" id="formBiblicalQuotes">
+        </div>
+        <div class="mb-3">
+            <label for="formDescription" class="form-label">Descripcion</label>
+            <textarea bind:value={Devotional.description} class="form-control" id="formDescription" rows="3" />
+        </div>
+        <button class="btn btn-success"> Save </button>
+    </div>
 </form>
 
 {#each listDevotional as listDevotionals}
-<div>
-    <h5>{listDevotionals.biblicalQuotes}</h5>
-    <p>{listDevotionals.description}</p>
-    <button on:click={deleteDevotional(listDevotionals.id)}>
-        delete
-    </button>
-</div>
+      
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">
+                <span class="badge rounded-pill bg-dark">
+                    {listDevotionals.biblicalQuotes}  
+                  </span>
+              </h5>
+            </div>
+            <div class="modal-body">
+              <p>{listDevotionals.description}</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" on:click={deleteDevotional(listDevotionals.id)}>
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
 {/each}
