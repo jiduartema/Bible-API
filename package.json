@@ -17,6 +17,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.2",
     "firebase": "^8.2.1",
     "sirv-cli": "^1.0.0"
   }
